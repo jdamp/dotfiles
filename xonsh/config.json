@@ -1,0 +1,10 @@
+{
+ "foreign_shells": [
+  {
+   "shell": "zsh"
+  }
+ ],
+ "xontribs": [
+  "mpl"
+ ]
+}
