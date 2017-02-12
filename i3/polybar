@@ -28,17 +28,12 @@ bottom=false
 ;dock=false
 ;wm-restack=i3
 width = 100%
-height = 22
+height = 30
 offset-x = 0
-offset-y = 0
+offset-y = ß
 
 background = #66090909
 foreground = ${colors.white}
-
-overline-size = 0
-overline-color = #f00
-underline-size = 0
-underline-color = ${colors.white}
 
 spacing = 1
 padding-left = 0
@@ -46,36 +41,24 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 1
 
-;tray-detached = false
 ;tray-position = right
 ;tray-offset-x = 
 ;tray-maxsize = 
 ;tray-padding = 
 
-font-0 = Terminus:size=10;0
+font-0 = Terminus:size=9;0
 font-1 = FontAwesome:pixelsize=12;-1
-;font-2 = unifont:size=6:heavy:fontformat=truetype;-2
-;font-3 = siji:pixelsize=10;-4
+font-2 = siji:pixelsize=10
+font-3 = FontAwesome:pixelsize=9;0
 
 modules-left = i3 
 modules-center = 
-#modules-right = mpd myVolume s wlan eth s memory cpu myLoad temperature s battery s date systemRoot systemHome
-modules-right = mySpotify s myVolume s wlan s eth s battery1 s battery2 s date
+;modules-right = mySpotify s myVolume s wlan s eth s battery1 s battery2 s date
+modules-right = mySpotify s myVolume s backlight  s battery1 s battery2 s date
 tray-position = right
-tray-padding = 2
+tray-padding = 3
 tray-transparent = true
-tray-background = ${colors.gray}
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+tray-background = ${colors.black}
 
 [bar/top-left]
 monitor = ${env:MONITOR:DP-2}
@@ -100,10 +83,8 @@ module-margin-right = 1
 
 font-0 = Terminus:size=10;0
 font-1 = FontAwesome:pixelsize=12;-2
-;font-0 = Roboto:pixelsize=11;
-;font-1 = FontAwesome:pixelsize=14;-2
-;font-2 = unifont:size=6:heavy:fontformat=truetype;-2
-;font-3 = siji:pixelsize=10;-4
+font-2 = siji:pixelsize=10
+font-3 = FontAwesome:pixelsize=9;0
 
 modules-left = i3
 modules-center =
@@ -118,12 +99,6 @@ tray-background = ${colors.grey}
 wm-restack = i3
 
 ;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
 
 [module/i3]
 type = internal/i3
@@ -149,7 +124,7 @@ label-focused-background = ${colors.gray}
 label-focused-padding = 4
 
 label-unfocused = %index%
-label-unfocused-foreground = ${colors.yellow}
+;label-unfocused-foreground = ${colors.yellow}
 label-unfocused-padding = 4
 
 label-urgent = %index%
@@ -182,36 +157,6 @@ format-discharging-padding = ${module/theme.format-padding}
 format-mounted-foreground = ${self.format-mounted-underline}
 format-unmounted-foreground = ${self.format-unmounted-underline}
 
-[module/mpd]
-type = internal/mpd
-
-inherit = module/theme
-
-format-online = <toggle>   <label-song>    [ <label-time>  ]
-
-label-song = %title% - %artist%
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-icon-prev = 
-icon-seekb = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-icon-seekf = 
-
-icon-random = 
-icon-repeat = 
-
-;toggle-on-foreground = ${colors.white}
-;toggle-off-foreground = #66
-
-;format-online-prefix = " "
-format-online-underline = #20dfdf
-format-online-background = #0d5959
-format-online-padding = 4
-
 [module/mySpotify]
 inherit = module/theme
 interval = 1
@@ -219,10 +164,22 @@ type = custom/script
 exec = .config/i3/i3blocks/mediaplayer
 click-left = i3-msg workspace number 8
 label = %output:0:100:...%
-format-prefix = " "
+format-prefix = "   "
 format-underline = #20dfdf
 format-foreground = ${colors.white}
 format-background = #0d5959
+
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <label>
+;format-background = ${colors.black}
+transparent=true
+;format-underline = ${colors.dyellow}
+format-padding = 2
+label =   %percentage%%
+ 
 
 [module/myVolume]
 inherit = module/theme
@@ -231,9 +188,9 @@ type = custom/script
 exec = .config/i3/i3blocks/volume
 scroll-up = pactl set-sink-volume 0 +1%
 scroll-down = pactl set-sink-volume 0 -1%
-click-left = urxvt -name float -e ncmpcpp &
+click-left = amixer -q set Master toggle
 click-right = pavucontrol &
-format-prefix = ""
+format-prefix = "  "
 format-underline = #ffffff
 
 [module/myLoad]
@@ -264,39 +221,6 @@ label-mounted = " %free%"
 label-unmounted = " ??"
 format-mounted-underline = #39c639
 format-unmounted-underline = #39c639
-
-[module/backlight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = │
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.white}
-
-[module/cpu]
-inherit = module/theme
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-underline = #d33636
-label = %percentage%
-
-[module/memory]
-inherit = module/theme
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-underline = #999999
-label = %{F${colors.white}  %percentage_used% %{F-}
 
 [module/wlan]
 inherit = module/theme
@@ -450,32 +374,6 @@ animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-foreground = ${self.format-charging-underline}
 animation-charging-framerate = 750
-
-[module/powermenu]
-type = custom/menu
-label-open =  ⏻ power
-label-open-foreground = #e60053
-label-close = cancel
-label-close-foreground = #e60053
-label-separator = |
-label-separator-foreground = #55
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-; vim:ft=dosini
 
 [module/s]
 type = custom/text
