@@ -25,17 +25,20 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-     c-c++
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      colors
-     emacs-lisp
      extra-langs
      git
-     ;; haskell
+     gtags
+     helm
      ipython-notebook
      (latex :variables latex-build-command "LatexMk")
+     
      markdown
      org
-     python
+     (python :variables python-test-runner 'pytest)
      shell-scripts
      smex
      syntax-checking
@@ -306,6 +309,32 @@ you should place your code here."
   (evilnc-default-hotkeys)
   (window-numbering-mode -1)
 
+  ;; =========================================
+  ;; Org-Mode
+  ;; =========================================
+  (define-key global-map "\C-cl" 'org-store-link)
+  (define-key global-map "\C-ca" 'org-agenda)
+  (setq org-log-done "time")
+  (setq org-agenda-files
+        (quote
+         ("~/Dropbox/phd/doc/17-01/logbook" "~/Dropbox/phd/doc/17-02/logbook.org")))
+
+
+  ;(setenv "WORKON_HOME" "~/local/anaconda3/envs/"
+  ;(pyvenv-mode 1)
+                                        ;)
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+  (add-hook 'python-mode (lambda () (setq flycheck-flake8-maximum-line-length 120)))
+
+  (setq TeX-PDF-mode t)
+  (setq TeX-source-correlate-mode t)
+  (setq TeX-source-correlate-start-server t)
+  (setq TeX-view-program-list
+   (quote
+    (("okular" "okular --unique %o#src:%n%(masterdir)./%b"))))
+  (setq TeX-view-program-selection (quote ((output-pdf "Okular"))))
+
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -316,24 +345,10 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(TeX-PDF-mode t)
- '(TeX-source-correlate-mode t)
- '(TeX-source-correlate-start-server t t)
- '(TeX-view-program-list
-   (quote
-    (("okular" "okular --unique %o#src:%n%(masterdir)./%b"))))
- '(TeX-view-program-selection (quote ((output-pdf "Okular"))))
- '(ansi-color-names-vector
-   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(custom-enabled-themes (quote (spacemacs-dark)))
- '(custom-safe-themes
-   (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
  '(evil-want-Y-yank-to-eol t)
  '(org-agenda-files (quote ("~/Dropbox/phd/doc/17-01/logbook")))
- '(package-selected-packages
-   (quote
-    (insert-shebang hide-comnt wolfram-mode thrift stan-mode scad-mode qml-mode matlab-mode julia-mode arduino-mode yapfify uuidgen py-isort org-projectile org-download mwim live-py-mode link-hint git-link flyspell-correct-helm flyspell-correct eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff dumb-jump company-shell column-enforce-mode color-identifiers-mode zenburn-theme ws-butler window-numbering which-key volatile-highlights visual-regexp-steroids vi-tilde-fringe use-package toc-org spacemacs-theme spaceline solarized-theme smooth-scrolling smex smeargle restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf popwin pip-requirements persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-gutter-fringe git-gutter-fringe+ gh-md flycheck-pos-tip flx-ido fish-mode fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu elisp-slime-nav ein disaster diff-hl define-word cython-mode company-statistics company-quickhelp company-c-headers company-auctex company-anaconda cmake-mode clean-aindent-mode clang-format buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
