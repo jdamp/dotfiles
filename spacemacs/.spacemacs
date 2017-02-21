@@ -29,7 +29,6 @@ values."
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
      colors
-     extra-langs
      git
      gtags
      helm
