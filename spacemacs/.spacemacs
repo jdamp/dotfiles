@@ -28,25 +28,20 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
-     cscope
      colors
      git
      gtags
      helm
      ipython-notebook
      (latex :variables latex-build-command "LatexMk")
-     
      markdown
      org
      (python :variables python-test-runner 'pytest)
      shell-scripts
      smex
+     spell-checking
      syntax-checking
      visual-regexp
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     spell-checking
      version-control
      )
    ;; List of additional packages that will be installed without being
@@ -89,7 +84,7 @@ values."
    dotspacemacs-editing-style 'emacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
-   ;; Specify the startup banner. Default value is `official', it displays
+   ;; Specify the startup banner. Default value is `(package-selected-packagesofficial', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
    ;; directory. A string value must be a path to an image format supported
@@ -264,14 +259,14 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; =============
+  ;; ======================================
   ;; WindMove
-  ;; =============
+  ;; ======================================
   (windmove-default-keybindings)
 
-  ;; =============
+  ;; ======================================
   ;; Whitespace
-  ;; =============
+  ;; ======================================
   (require 'whitespace)
   (add-hook 'LaTeX-mode-hook 'whitespace-mode)
   (setq whitespace-style (quote (spaces tabs newline space-mark tab-mark newline-mark)))
@@ -286,25 +281,27 @@ you should place your code here."
           ))
   ;;(global-linum-mode)
   (add-hook 'find-file-hook 'linum-mode)
-  ;; ================
+
+  ;; =========================================
   ;; avy
-  ;; ================
+  ;; =========================================
   (global-set-key (kbd "C-:") 'avy-goto-char)
   (global-set-key (kbd "C-'") 'avy-goto-char-2)
   (global-set-key (kbd "M-g f") 'avy-goto-line)
   (global-set-key (kbd "M-g w") 'avy-goto-word-1)
-  ;; ================
+
+  ;; =========================================
   ;; Google Translate
-  ;; ================
+  ;; =========================================
   (global-set-key "\C-ct" 'google-translate-smooth-translate)
   (setq google-translate-translation-directions-alist
         '(("de" . "en") ("en" . "de") ("de" . "fr") ("fr" . "de")))
 
   (auto-fill-mode -1)
 
-  ;; ================
+  ;; =========================================
   ;; Evil-Nerd-Commenter
-  ;; ================
+  ;; =========================================
   ;; Emacs key bindings
   (evilnc-default-hotkeys)
   (window-numbering-mode -1)
@@ -320,12 +317,22 @@ you should place your code here."
          ("~/Dropbox/phd/doc/17-01/logbook" "~/Dropbox/phd/doc/17-02/logbook.org")))
 
 
-  ;(setenv "WORKON_HOME" "~/local/anaconda3/envs/"
-  ;(pyvenv-mode 1)
-                                        ;)
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+  ;; =========================================
+  ;; Python
+  ;; =========================================
   (add-hook 'python-mode (lambda () (setq flycheck-flake8-maximum-line-length 120)))
-  (setq-default company-async-timeout 5) ; Necessary for 
+  (setenv "WORKON_HOME" "~/local/anaconda3/envs/"
+  (pyvenv-mode 1)
+  )
+  ;; =========================================
+  ;; C++
+  ;; =========================================
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+  (setq-default company-async-timeout 5) ; Necessary for Rootcore projects where a lot of headers have to be queried
+
+  ;; =========================================
+  ;; LaTeX
+  ;; =========================================
   (setq TeX-PDF-mode t)
   (setq TeX-source-correlate-mode t)
   (setq TeX-source-correlate-start-server t)
@@ -333,8 +340,13 @@ you should place your code here."
    (quote
     (("okular" "okular --unique %o#src:%n%(masterdir)./%b"))))
   (setq TeX-view-program-selection (quote ((output-pdf "Okular"))))
-   )
 
+  ;;
+  ;; Avoid emacs to put a list package-selected-packages into custom-set-variables
+  ;;
+  ;(setq custom-file "~/.emacs.d/package-selected-packages.el")
+  ;(load custom-file)
+ )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
@@ -345,7 +357,6 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(evil-want-Y-yank-to-eol t)
- '(org-agenda-files (quote ("~/Dropbox/phd/doc/17-01/logbook")))
  )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
