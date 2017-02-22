@@ -28,6 +28,7 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
+     cscope
      colors
      git
      gtags
@@ -324,7 +325,7 @@ you should place your code here."
                                         ;)
   (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
   (add-hook 'python-mode (lambda () (setq flycheck-flake8-maximum-line-length 120)))
-
+  (setq-default company-async-timeout 5) ; Necessary for 
   (setq TeX-PDF-mode t)
   (setq TeX-source-correlate-mode t)
   (setq TeX-source-correlate-start-server t)
@@ -332,9 +333,7 @@ you should place your code here."
    (quote
     (("okular" "okular --unique %o#src:%n%(masterdir)./%b"))))
   (setq TeX-view-program-selection (quote ((output-pdf "Okular"))))
-
-
-  )
+   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
