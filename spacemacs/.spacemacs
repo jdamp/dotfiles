@@ -330,7 +330,8 @@ you should place your code here."
   ;; =========================================
   (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
   (setq-default company-async-timeout 5) ; Necessary for Rootcore projects where a lot of headers have to be queried
-
+  (add-hook 'c++-mode-hook
+            (lambda () (local-set-key (kbd "C-c .") 'company-complete)))
   ;; =========================================
   ;; LaTeX
   ;; =========================================
