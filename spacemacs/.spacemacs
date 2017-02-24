@@ -32,6 +32,7 @@ values."
      git
      gtags
      helm
+     javascript
      ipython-notebook
      (latex :variables latex-build-command "LatexMk")
      markdown
