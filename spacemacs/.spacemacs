@@ -40,7 +40,10 @@ values."
      (python :variables python-test-runner 'pytest)
      shell-scripts
      smex
-     spell-checking
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil
+                     =enable-flyspell-auto-completion= t)
+                     
      syntax-checking
      visual-regexp
      version-control
@@ -316,8 +319,8 @@ you should place your code here."
   (setq org-agenda-files
         (quote
          ("~/Dropbox/phd/doc/17-01/logbook" "~/Dropbox/phd/doc/17-02/logbook.org")))
-
-
+  (add-hook 'org-mode-hook 'flyspell-mode)
+  
   ;; =========================================
   ;; Python
   ;; =========================================
@@ -342,12 +345,12 @@ you should place your code here."
    (quote
     (("okular" "okular --unique %o#src:%n%(masterdir)./%b"))))
   (setq TeX-view-program-selection (quote ((output-pdf "Okular"))))
-
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
   ;;
   ;; Avoid emacs to put a list package-selected-packages into custom-set-variables
   ;;
-  ;(setq custom-file "~/.emacs.d/package-selected-packages.el")
-  ;(load custom-file)
+  (setq custom-file "~/.emacs.d/package-selected-packages.el")
+  (load custom-file)
  )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -359,7 +362,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (spacemacs-dark)))
  '(evil-want-Y-yank-to-eol t)
- )
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
