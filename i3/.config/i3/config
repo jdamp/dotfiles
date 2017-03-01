@@ -168,6 +168,7 @@ set $bg-color            #9575cd
 bindsym $mod+d exec rofi -show run -lines 10 -eh 1 -width 100 -padding 250 -opacity "20" -bw 20 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Code Pro 14"
 
 assign [class="^TelegramDesktop$"] → 10
+assign [class="^Slack$"] → 10
 assign [class="^Thunderbird$"] → 9
 for_window [class="Spotify"] move to workspace 8
 
@@ -221,6 +222,7 @@ exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox
 exec --no-startup-id /usr/bin/telegram-desktop
+exec --no-startup-id slack
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id "synclient TouchPadOff=1"
 exec --no-startup-id "xset b off"    
