@@ -23,7 +23,7 @@ margin-top = 5
 margin-bottom = 5
 
 [bar/top]
-monitor = ${env:MONITOR:eDP1}
+monitor = ${env:MONITOR:eDP-1}
 bottom=false
 ;dock=false
 ;wm-restack=i3
