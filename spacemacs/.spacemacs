@@ -41,8 +41,7 @@ values."
      shell-scripts
      smex
      (spell-checking :variables
-                     spell-checking-enable-by-default nil
-                     enable-flyspell-auto-completion t)
+                     spell-checking-enable-by-default nil)
      syntax-checking
      visual-regexp
      )
@@ -306,7 +305,6 @@ you should place your code here."
   ;; =========================================
   ;; Emacs key bindings
   (evilnc-default-hotkeys)
-  (window-numbering-mode -1)
 
   ;; =========================================
   ;; Org-Mode
@@ -368,8 +366,13 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (spacemacs-dark)))
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(evil-want-Y-yank-to-eol t)
-)
+ '(package-selected-packages
+   (quote
+    (winum unfill fuzzy flycheck-ycmd company-ycmd ycmd request-deferred deferred stickyfunc-enhance srefactor zenburn-theme yapfify ws-butler window-numbering which-key web-beautify volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline solarized-theme smex smeargle rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree mwim move-text monokai-theme minitest magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc insert-shebang info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link ggtags flyspell-correct-helm flycheck-pos-tip flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ein dumb-jump disaster define-word cython-mode company-tern company-statistics company-shell company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-highlight-symbol auto-dictionary auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
