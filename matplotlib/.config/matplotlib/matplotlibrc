@@ -55,7 +55,7 @@
 # webagg.port_retries : 50
 
 # When True, open the webbrowser to the plot that is shown
-# webagg.open_in_browser : True
+# id	x  webagg.open_in_browser : True
 
 # When True, the figures rendered in the nbagg backend are created with
 # a transparent background.
@@ -218,7 +218,7 @@ lines.solid_capstyle : round   # butt|round|projecting
 text.color          : 0.15
 
 ### LaTeX customizations. See http://wiki.scipy.org/Cookbook/Matplotlib/UsingTex
-text.usetex         : True  # use latex for all text handling. The following fonts
+#text.usetex         : True  # use latex for all text handling. The following fonts
                               # are supported through the usual rc parameter settings:
                               # new century schoolbook, bookman, times, palatino,
                               # zapf chancery, charter, serif, sans-serif, helvetica,
@@ -229,7 +229,7 @@ text.usetex         : True  # use latex for all text handling. The following fon
                               # matplotlib mailing list
 #text.latex.unicode : False # use "ucs" and "inputenc" LaTeX packages for handling
                             # unicode strings.
-text.latex.preamble :  \usepackage{libertine},\usepackage[libertine]{newtxmath},\usepackage{sfmath},\usepackage[T1]{fontenc} # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
+text.latex.preamble :  \usepackage{libertine},\usepackage[libertine]{newtxmath},\usepackage{amsmath},\usepackage[T1]{fontenc} # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
                             # AND IS THEREFORE UNSUPPORTED. PLEASE DO NOT ASK FOR HELP
                             # IF THIS FEATURE DOES NOT DO WHAT YOU EXPECT IT TO.
                             # preamble is a comma separated list of LaTeX statements
