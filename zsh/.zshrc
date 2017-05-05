@@ -86,3 +86,4 @@ mount_mogon() {
 mount_lxplus() {
     sshfs -p 22 jodamp@lxplus.cern.ch:/afs/cern.ch/work/j/jodamp/public/ /home/jdamp/mnt/lxplus
 }
+

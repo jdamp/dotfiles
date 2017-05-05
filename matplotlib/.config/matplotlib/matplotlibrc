@@ -55,7 +55,8 @@
 # webagg.port_retries : 50
 
 # When True, open the webbrowser to the plot that is shown
-# id	x  webagg.open_in_browser : True
+
+# webagg.open_in_browser : True
 
 # When True, the figures rendered in the nbagg backend are created with
 # a transparent background.
@@ -229,7 +230,7 @@ text.color          : 0.15
                               # matplotlib mailing list
 #text.latex.unicode : False # use "ucs" and "inputenc" LaTeX packages for handling
                             # unicode strings.
-text.latex.preamble :  \usepackage{libertine},\usepackage[libertine]{newtxmath},\usepackage{amsmath},\usepackage[T1]{fontenc} # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
+text.latex.preamble :  \usepackage{libertine},\usepackage[libertine]{newtxmath},\usepackage{sfmath},\usepackage[T1]{fontenc} # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
                             # AND IS THEREFORE UNSUPPORTED. PLEASE DO NOT ASK FOR HELP
                             # IF THIS FEATURE DOES NOT DO WHAT YOU EXPECT IT TO.
                             # preamble is a comma separated list of LaTeX statements
