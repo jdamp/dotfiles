@@ -82,3 +82,7 @@ mount_mogon() {
     ssh -f jdamp@linux.zdv.uni-mainz.de -L 22022:mogonetap:22 -N
     sshfs -p 22022 jdamp@127.0.0.1:/home/jdamp/masterthesis/ /home/jdamp/mnt/masterthesis
     }
+
+mount_lxplus() {
+    sshfs -p 22 jodamp@lxplus.cern.ch:/afs/cern.ch/work/j/jodamp/public/ /home/jdamp/mnt/lxplus
+}
