@@ -7,7 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Hack 10
+font =  Hack 11
 scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
@@ -30,56 +30,51 @@ filter_unmatched_urls = true
 
 # emit escape sequences for extra modified keys
 #modify_other_keys = false
-
 [colors]
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
-foreground      = #c0c5ce
-foreground_bold = #c0c5ce
-cursor          = #c0c5ce
-#background      = #2b303b
-background = rgba(43, 48, 59, 0.9)
+# Base16 Solarized Light
+# Author: Ethan Schoonover (http://ethanschoonover.com/solarized)
+
+foreground      = #586e75
+foreground_bold = #073642
+cursor          = #073642
+background      = #fdf6e3
+
 # 16 color space
-color0  = #2b303b
-color1  = #bf616a
-color2  = #a3be8c
-color3  = #ebcb8b
-color4  = #8fa1b3
-color5  = #b48ead
-color6  = #96b5b4
-color7  = #c0c5ce
-color8  = #65737e
-color9  = #bf616a
-color10 = #a3be8c
-color11 = #ebcb8b
-color12 = #8fa1b3
-color13 = #b48ead
-color14 = #96b5b4
-color15 = #eff1f5
 
-# 256 color space
-color16 = #d08770
-color17 = #ab7967
-color18 = #343d46
-color19 = #4f5b66
-color20 = #a7adba
-color21 = #dfe1e8
+# Black, Gray, Silver, White
+color0  = #fdf6e3
+color8  = #839496
+color7  = #586e75
+color15 = #002b36
 
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+# Red
+color1  = #dc322f
+color9  = #dc322f
 
-# if unset, will reverse foreground and background
-#highlight = #2f2f2f
+# Green
+color2  = #859900
+color10 = #859900
 
-[hints]
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+# Yellow
+color3  = #b58900
+color11 = #b58900
 
-# vim: ft=dosini cms
+# Blue
+color4  = #268bd2
+color12 = #268bd2
+
+# Purple
+color5  = #6c71c4
+color13 = #6c71c4
+
+# Teal
+color6  = #2aa198
+color14 = #2aa198
+
+# Extra colors
+color16 = #cb4b16
+color17 = #d33682
+color18 = #eee8d5
+color19 = #93a1a1
+color20 = #657b83
+color21 = #073642

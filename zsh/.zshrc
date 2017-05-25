@@ -77,7 +77,7 @@ alias xrandr_work='xrandr --output DP-2 --mode 1680x1050 --right-of eDP-1 && feh
 alias xrandr_home='xrandr --output DP-2 --mode 1680x1050 --left-of eDP-1 && feh --bg-scale "$wallpaper"'
 alias xrandr_tv='xrandr --output HDMI-1 --mode 1920x1080 --right-of eDP-1 && feh --bg-scale "$wallpaper"'
  
-screenfetch -c 3,4
+screenfetch #-c 3,4
 mount_mogon() {
     ssh -f jdamp@linux.zdv.uni-mainz.de -L 22022:mogonetap:22 -N
     sshfs -p 22022 jdamp@127.0.0.1:/home/jdamp/masterthesis/ /home/jdamp/mnt/masterthesis

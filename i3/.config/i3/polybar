@@ -28,7 +28,7 @@ bottom=false
 ;dock=false
 ;wm-restack=i3
 width = 100%
-height = 30
+height = 40
 offset-x = 0
 offset-y = ß
 
@@ -41,24 +41,19 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 1
 
-;tray-position = right
-;tray-offset-x = 
-;tray-maxsize = 
-;tray-padding = 
-
-font-0 = Terminus:size=9;0
-font-1 = FontAwesome:pixelsize=12;-1
+font-0 = Noto Sans:size=11;0
+font-1 = FontAwesome:pixelsize=12;0
 font-2 = siji:pixelsize=10
 font-3 = FontAwesome:pixelsize=9;0
 
 modules-left = i3 
 modules-center = 
 ;modules-right = mySpotify s myVolume s wlan s eth s battery1 s battery2 s date
-modules-right = mySpotify s myVolume s backlight  s battery1 s battery2 s date
-tray-position = right
-tray-padding = 3
-tray-transparent = true
-tray-background = ${colors.black}
+modules-right = mySpotify s myVolume s wlan s backlight  s battery1 s battery2 s date
+;tray-position = right
+;tray-padding = 3
+;tray-transparent = true
+;tray-background = ${colors.black}
 
 [bar/top-left]
 monitor = ${env:MONITOR:DP-2}
@@ -81,8 +76,8 @@ padding-right = 2
 module-margin-left = 0
 module-margin-right = 1
 
-font-0 = Terminus:size=10;0
-font-1 = FontAwesome:pixelsize=12;-2
+font-0 = Noto Sans:size=11;0
+font-1 = FontAwesome:pixelsize=12;0
 font-2 = siji:pixelsize=10
 font-3 = FontAwesome:pixelsize=9;0
 
