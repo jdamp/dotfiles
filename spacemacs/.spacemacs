@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     lua
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -355,8 +356,8 @@ you should place your code here."
   ;;
   ;; Avoid emacs to put a list package-selected-packages into custom-set-variables
   ;;
-  (setq custom-file "~/.emacs.d/package-selected-packages.el")
-  (load custom-file)
+  ;(setq custom-file "~/.emacs.d/package-selected-packages.el")
+  ;(load custom-file)
  )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
