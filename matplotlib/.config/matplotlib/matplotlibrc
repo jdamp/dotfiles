@@ -55,6 +55,7 @@
 # webagg.port_retries : 50
 
 # When True, open the webbrowser to the plot that is shown
+
 # webagg.open_in_browser : True
 
 # When True, the figures rendered in the nbagg backend are created with
@@ -218,7 +219,7 @@ lines.solid_capstyle : round   # butt|round|projecting
 text.color          : 0.15
 
 ### LaTeX customizations. See http://wiki.scipy.org/Cookbook/Matplotlib/UsingTex
-text.usetex         : True  # use latex for all text handling. The following fonts
+#text.usetex         : True  # use latex for all text handling. The following fonts
                               # are supported through the usual rc parameter settings:
                               # new century schoolbook, bookman, times, palatino,
                               # zapf chancery, charter, serif, sans-serif, helvetica,

@@ -165,7 +165,7 @@ bindsym $mod+F12 exec --no-startup-id $HOME/.config/i3/autorandr.sh
 
 set $text-color          #eff1f5
 set $bg-color            #9575cd
-bindsym $mod+d exec rofi -show run -lines 10 -eh 1 -width 100 -padding 250 -opacity "20" -bw 20 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Code Pro 14"
+bindsym $mod+d exec rofi -show run -lines 10 -eh 1 -width 80 -padding 250 -opacity "20" -bw 20 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Code Pro 14"
 
 assign [class="^TelegramDesktop$"] → 10
 assign [class="^Slack$"] → 10
