@@ -7,11 +7,11 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font =  Hack 11
+font =  Source Code Pro 10
 scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
-#geometry = 640x480
+#geometry = 800x600
 
 # "system", "on" or "off"
 cursor_blink = system
@@ -31,50 +31,50 @@ filter_unmatched_urls = true
 # emit escape sequences for extra modified keys
 #modify_other_keys = false
 [colors]
-# Base16 Solarized Light
-# Author: Ethan Schoonover (http://ethanschoonover.com/solarized)
+# Base16 Ocean
+# Author: Chris Kempson (http://chriskempson.com)
 
-foreground      = #586e75
-foreground_bold = #073642
-cursor          = #073642
-background      = #fdf6e3
+foreground      = #c0c5ce
+foreground_bold = #dfe1e8
+cursor          = #dfe1e8
+background      = rgba(43, 48, 59, 0.85)
 
 # 16 color space
 
 # Black, Gray, Silver, White
-color0  = #fdf6e3
-color8  = #839496
-color7  = #586e75
-color15 = #002b36
+color0  = #2b303b
+color8  = #65737e
+color7  = #c0c5ce
+color15 = #eff1f5
 
 # Red
-color1  = #dc322f
-color9  = #dc322f
+color1  = #bf616a
+color9  = #bf616a
 
 # Green
-color2  = #859900
-color10 = #859900
+color2  = #a3be8c
+color10 = #a3be8c
 
 # Yellow
-color3  = #b58900
-color11 = #b58900
+color3  = #ebcb8b
+color11 = #ebcb8b
 
 # Blue
-color4  = #268bd2
-color12 = #268bd2
+color4  = #8fa1b3
+color12 = #8fa1b3
 
 # Purple
-color5  = #6c71c4
-color13 = #6c71c4
+color5  = #b48ead
+color13 = #b48ead
 
 # Teal
-color6  = #2aa198
-color14 = #2aa198
+color6  = #96b5b4
+color14 = #96b5b4
 
 # Extra colors
-color16 = #cb4b16
-color17 = #d33682
-color18 = #eee8d5
-color19 = #93a1a1
-color20 = #657b83
-color21 = #073642
+color16 = #d08770
+color17 = #ab7967
+color18 = #343d46
+color19 = #4f5b66
+color20 = #a7adba
+color21 = #dfe1e8
