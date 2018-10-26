@@ -56,7 +56,7 @@ tray-transparent = true
 tray-background = ${colors.black}
 
 [bar/top-left]
-monitor = ${env:MONITOR:DP-2}
+monitor = ${env:MONITOR}
 width = 100%
 height = 22
 offset-x = 0
@@ -84,7 +84,7 @@ font-3 = FontAwesome:pixelsize=9;0
 modules-left = i3
 modules-center =
 #modules-right = mpd myVolume s wlan eth s memory cpu myLoad temperature s battery s date systemRoot systemHome
-modules-right = 
+modules-right = date
 
 tray-position = right
 tray-padding = 2
@@ -228,7 +228,7 @@ format-connected-underline = #268bd2
 format-disconnected-underline = ${colors.red}
 
 ;label-connected = " %local_ip% %signal% %downspeed% %upspeed%"
-label-connected = " %signal% [  %downspeed% ] [  %upspeed% ]"
+label-connected = " %signal%"
 label-disconnected = "OFFLINE"
 label-connected-foreground = ${colors.green}
 label-disconnected-foreground = ${colors.red}
