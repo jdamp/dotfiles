@@ -5,7 +5,7 @@ $pdf_previewer = "okular --unique %S";
 $bibtex_use = 2;
 $out_dir = "output";
 $pdflatex = 'lualatex --shell-escape -file-line-error -interaction=nonstopmode -synctex=1 %O %S';
-$pdflatex .= '&& cp %D %R.pdf && cp %Z/%R.synctex.gz %R.synctex.gz && cp %Z/%R.log %R.log';
+$pdflatex .= '&& cp %D %R.pdf && cp %Z%R.synctex.gz %R.synctex.gz && cp %Z%R.log %R.log';
 $ENV{TEXINPUTS} = "$ENV{PWD}:";
 
  
