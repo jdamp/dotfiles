@@ -175,6 +175,7 @@ for_window [class="Spotify"] move to workspace 8
 
 
 
+
 # Gaps and border Settings
 
 set $default_gaps_inner 10
@@ -209,6 +210,25 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources for some reason.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #bar {
@@ -216,15 +236,16 @@ bindsym $mod+r mode "resize"
 #}
 # autostart programs
 
-exec_always --no-startup-id feh --bg-scale ~/pics/wallpaper.png
+set $wallpaper ~/pics/wallpaper.png
+exec_always --no-startup-id feh --bg-scale $wallpaper
 exec_always --no-startup-id $HOME/.config/i3/launch_polybar.sh
 exec_always --no-startup-id $HOME/.config/i3/autorandr.sh
+exec_always --no-startup-id wal -f $wallpaper
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 
 exec --no-startup-id nm-applet
 exec --no-startup-id cernbox
 exec --no-startup-id /usr/bin/telegram-desktop
-exec --no-startup-id slack
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 #exec --no-startup-id "synclient TouchPadOff=1"
 exec --no-startup-id "xset b off"    
