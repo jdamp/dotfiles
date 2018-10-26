@@ -70,12 +70,12 @@ alias bat_80='tpacpi-bat -s SP 0 80'
 alias bat_100='tpacpi-bat -s SP 0 0'
 alias ...='cd ../..'
 alias ....='cd ../../../'
-
+alias ipython="ipython --pylab"
 wallpaper=$HOME/pics/wallpaper.png
 
-alias xrandr_work='xrandr --output DP-2 --mode 1680x1050 --right-of eDP-1 && feh --bg-scale "$wallpaper"'
-alias xrandr_home='xrandr --output DP-2 --mode 1680x1050 --left-of eDP-1 && feh --bg-scale "$wallpaper"'
-alias xrandr_tv='xrandr --output HDMI-1 --mode 1920x1080 --right-of eDP-1 && feh --bg-scale "$wallpaper"'
+alias xrandr_work='xrandr --output DP2 --mode 1680x1050 --right-of eDP1 && feh --bg-scale "$wallpaper"'
+alias xrandr_home='xrandr --output DP2 --mode 1680x1050 --left-of eDP1 && feh --bg-scale "$wallpaper"'
+alias xrandr_tv='xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1 && feh --bg-scale "$wallpaper"'
  
 screenfetch -c 3,6
 mount_mogon() {
