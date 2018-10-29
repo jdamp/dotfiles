@@ -15,6 +15,7 @@ fg = ${xrdb:color7:#b9fafc}
 active = #0c977f
 inactive  = #086757
 
+
 black1= ${xrdb:color0:#071017}
 red1 = ${xrdb:color1:#497B5A}
 green1 = ${xrdb:color2:#25C66E}
@@ -31,7 +32,7 @@ yellow2 = ${xrdb:color11:#1b8b8b}
 blue2 = ${xrdb:color12:#179696}
 magenta2 = ${xrdb:color13:#1a7e87}
 cyan2 = ${xrdb:color14:#0fbda0}
-white2 = ${xrdb:color15:#b9fafc
+white2 = ${xrdb:color15:#b9fafc}
 
 [global/wm]
 margin-top = 5
@@ -40,38 +41,35 @@ margin-bottom = 5
 [bar/top]
 monitor = ${env:MONITOR:eDP1}
 width = 100%
-height = 25
+height = 30
 fixed-center = true
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-
-module-margin-left = 5
+module-margin-left = 10
 module-margin-right = 0
 
-border-top-size = 5
-border-right-size = 5
-border-left-size = 5
-border-bottom-size = 5
+border-top-size = 3
+border-right-size = 3
+border-left-size = 3
+border-bottom-size = 3
 border-color = ${colors.black2}
 
 line-size = 2
 
-font-0 = Noto Sans:size=10;0
-font-1 = FontAwesome:pixelsize=12;0
-font-2 = siji:pixelsize=10
-font-3 = FontAwesome:pixelsize=9;0
+font-0 = FontAwesome:size=10;0
+font-1 = Roboto:size=10;0
+font-2 = "Wuncon siji:pixelsize=10;0"
+font-3 = "Wuncon siji:pixelsize=10;0";"FontAwesome 5:style=Solid:pixelsize=9;0"
 
 modules-left = i3 
-;modules-center = mySpotify
-;modules-right =  myVolume s wlan s backlight  s battery1 s battery2 s date
+modules-center = spotify
 modules-right = volume xbacklight battery0 battery1 date
-;tray-position = right
-;tray-padding = 0
-;tray-transparent = true
-;tray-background = ${colors.black2}
+tray-position = right
+tray-padding = 0
+tray-background = ${colors.black1}
 
 
 [bar/top-left]
@@ -93,6 +91,47 @@ full-at = 99
 battery = BAT0
 adapter = ADP1
 poll-interval = 5
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+label-charging = Charging %percentage%% %time%%
+label-discharging = %percentage%% %time% left
+label-full = Fully charged
+
+format-discharging-foreground = ${colors.magenta1}
+format-discharging-underline = ${colors.magenta1}
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
 
 [module/battery1]
 type = internal/battery
@@ -100,6 +139,47 @@ full-at = 99
 battery = BAT1
 adapter = ADP1
 poll-interval = 5
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+label-charging = Charging %percentage%% %time%%
+label-discharging = %percentage%% %time% left
+label-full = Fully charged
+
+format-discharging-foreground = ${colors.magenta1}
+format-discharging-underline = ${colors.magenta1}
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
 
 [module/i3]
 type = internal/i3
@@ -112,10 +192,41 @@ wrapping-scroll = false
 reverse-scroll = false
 fuzzy-match = true
 
+label-mode = %mode%
+label-mode-padding = 
+label-mode-foreground = ${colors.blue1}
+label-mode-background = ${colors.green1}
+
+label-focused = %index%
+label-focused-foreground = ${colors.black1}
+label-focused-background = ${colors.white1}
+label-focused-padding = 4
+
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.white1}
+label-unfocused-padding = 4
+
+label-urgent = %index%
+label-urgent-background = ${colors.blue1}
+label-urgent-padding = 4
+
+label-visible = %index%
+label-visible-foreground = ${colors.red1}
+label-visible-padding = 4
 
 [module/xbacklight]
-type = internal/backlight
+type = internal/xbacklight
 card = intel_backlight
+format = <ramp> <label>
+format-foreground = ${colors.yellow1}
+format-underline = ${colors.yellow1}
+label = %percentage%%
+
+ramp-0 =
+ramp-1 =
+ramp-2 =
+ramp-3 =
+ramp-4 =
 
 
 [module/date]
@@ -123,7 +234,7 @@ type = internal/date
 interval = 1.0
 date = %Y-%m-%d%
 time = %H:%M:%S
-format = 🕓 <label>
+format =  <label>
 
 ; Available tokens:
 ;   %date%
@@ -131,33 +242,40 @@ format = 🕓 <label>
 ; Default: %date%
 label = %date% %time%
 label-font = 3
-
+format-foreground = ${colors.cyan1}
+format
+-underline = ${colors.cyan1}
 
 [module/volume]
 type = internal/pulseaudio
-
-; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
-; If not, uses default sink
 sink = alsa_output.pci-0000_00_1b.0.analog-stereo
-
-; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
-; Default: true
-use-ui-max = true
-
-; Interval for volume increase/decrease (in percent points) (unreleased)
-; Default: 5
-interval = 5
-;scroll-up = pactl set-sink-volume 0 +1%
-;scroll-down = pactl set-sink-volume 0 -1%
-;click-left = amixer -q set Master toggle
-;click-right = pavucontrol &
+scroll-up = pactl set-sink-volume 0 +1%
+scroll-down = pactl set-sink-volume 0 -1%
+click-left = amixer -q set Master toggle
+click-right = pavucontrol
 format-volume = <ramp-volume> <label-volume>
-; Available tokens:
-;   %percentage% (default)
-label-muted = 🔇 muted
-label-muted-foreground = #666
+format-volume-foreground = ${colors.blue2}
+format-muted-foreground = ${colors.blue2}
+format-volume-underline = ${colors.blue2}
+format-muted-underline = ${colors.blue2}
+label-muted =  muted
+label-muted-foreground = #fff
 ; Only applies if <ramp-volume> is used
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
+;format-foreground = ${colors.blue1}
+format-underline = #20dfdf
+[module/spotify]
+type = custom/script
+interval = 2
+format = <label>
+format-prefix = "  "
+format-underline = #1db954
+click-left = xdotool key super+0
+format-prefix-foreground = ${colors.fg}
+format-prefix-background = ${colors.bg}
+format-background =${colors.bg}
+exec = ~/.config/polybar/scripts/spot
+tail = true
