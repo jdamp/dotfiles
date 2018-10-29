@@ -53,6 +53,8 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
 export EDITOR='emacs'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
