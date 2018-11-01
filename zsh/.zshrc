@@ -66,20 +66,25 @@ alias -s pdf=evince
 alias -s tex=emacs
 alias -s png=eog
 alias root="root -l"
-alias rdmainz="rdesktop -u jdamp@uni-mainz.de -g 95% rds.zdv.uni-mainz.de" 
 alias emnw='emacs -nw'
 alias bat_80='tpacpi-bat -s SP 0 80'
 alias bat_100='tpacpi-bat -s SP 0 0'
 alias ...='cd ../..'
 alias ....='cd ../../../'
 alias ipython="ipython --pylab"
+
+bw () {
+	wal -i "$1" -a90
+	cp -r "$1" $HOME/pics/wallpaper
+}
+
 wallpaper=$HOME/pics/wallpaper.png
 
 alias xrandr_work='xrandr --output DP2 --mode 1680x1050 --right-of eDP1 && feh --bg-scale "$wallpaper"'
 alias xrandr_home='xrandr --output DP2 --mode 1680x1050 --left-of eDP1 && feh --bg-scale "$wallpaper"'
 alias xrandr_tv='xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1 && feh --bg-scale "$wallpaper"'
  
-screenfetch -c 3,6
+neofetch
 mount_mogon() {
     ssh -f jdamp@linux.zdv.uni-mainz.de -L 22022:mogonetap:22 -N
     sshfs -p 22022 jdamp@127.0.0.1:/home/jdamp/phd/ /home/jdamp/mnt/phd

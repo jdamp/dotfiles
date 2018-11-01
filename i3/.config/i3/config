@@ -31,7 +31,7 @@ font Roboto 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+q kill
@@ -162,6 +162,8 @@ bindsym $mod+F1 exec firefox
 bindsym $mod+F2 exec thunderbird
 bindsym $mod+F3 exec emacs
 bindsym $mod+F12 exec --no-startup-id $HOME/.config/i3/autorandr.sh
+bindsym $mod+o exec i3-msg open
+
 
 set $text-color          #eff1f5
 set $bg-color            #9575cd
@@ -218,37 +220,25 @@ bindsym $mod+r mode "resize"
 # it fails to get colors from Xresources for some reason.
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
-
+set_from_resource $bg2 i3wm.color5
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.focused          $bg     $bg2     $fg  $bg       $bg
+client.focused_inactive $bg     $bg2     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
 
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        status_command i3status
-#}
-# autostart programs
-
-set $wallpaper ~/pics/wallpaper.png
-exec_always --no-startup-id feh --bg-scale $wallpaper
-exec_always --no-startup-id $HOME/.config/i3/launch_polybar.sh
-exec_always --no-startup-id $HOME/.config/i3/autorandr.sh
-exec_always --no-startup-id wal -f $wallpaper
-exec --no-startup-id compton -b --config ~/.config/compton.conf
-
+set $wallpaper ~/pics/wallpaper
 exec --no-startup-id nm-applet
 exec --no-startup-id cernbox
 exec --no-startup-id /usr/bin/telegram-desktop
-exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec_always --no-startup-id $HOME/.config/i3/autorandr.sh
+exec_always --no-startup-id wal -R
 #exec --no-startup-id "synclient TouchPadOff=1"
 exec --no-startup-id "xset b off"    
 exec --no-startup-id tilda
 exec --no-startup-id dunst
 exec --no-startup-id "xrdb ~/.Xresources"
+

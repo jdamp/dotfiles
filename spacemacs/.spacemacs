@@ -17,7 +17,7 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
+   '(csv
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -297,7 +297,7 @@ you should place your code here."
   ;; =========================================
   ;; Google Translate
   ;; =========================================
-  (global-set-key "\C-ct" 'google-translate-smooth-translate)
+  (global-set-key "\C-cg" 'google-translate-smooth-translate)
   (setq google-translate-translation-directions-alist
         '(("de" . "en") ("en" . "de") ("de" . "fr") ("fr" . "de")))
 
@@ -349,11 +349,31 @@ you should place your code here."
   (setq TeX-PDF-mode t)
   (setq TeX-source-correlate-mode t)
   (setq TeX-source-correlate-start-server t)
+  (setq TeX-error-overview-open-after-TeX-run t)
+  (setq Tex-debug-warnings t)
+  (setq TeX-debug-bad-boxes t)
   (setq TeX-view-program-list
    (quote
     (("okular" "okular --unique %o#src:%n%(masterdir)./%b"))))
   (setq TeX-view-program-selection (quote ((output-pdf "Okular"))))
   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  
+  (defun TeX-error-delete-window ()
+    "Delete TeX error window when there are no errors to show."
+    (let ((w (get-buffer-window))
+          (b (get-buffer "*TeX Help*")))
+      (when w
+        (delete-window w))
+      (when b
+        (setq w (get-buffer-window b))
+        (when w
+          (delete-window w)))))
+
+  (defun TeX-error-install-delete-window-hook ()
+    "Install `TeX-error-delete-window' in buffer-local `kill-buffer-hook'."
+    (add-hook 'kill-buffer-hook #'TeX-error-delete-window nil t))
+
+  (add-hook 'TeX-error-overview-mode-hook #'TeX-error-install-delete-window-hook)  
   ;;
   ;; Avoid emacs to put a list package-selected-packages into custom-set-variables
   ;;
@@ -368,12 +388,44 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
  '(package-selected-packages
    (quote
-    (lua-mode zenburn-theme yapfify ws-butler winum which-key web-mode web-beautify volatile-highlights visual-regexp-steroids vimrc-mode vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline solarized-theme smex smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree mwim move-text monokai-theme mmm-mode minitest markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md ggtags fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode ein dumb-jump disaster define-word dactyl-mode cython-mode company-web company-tern company-statistics company-shell company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-highlight-symbol auto-dictionary auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (org-mime lua-mode zenburn-theme yapfify ws-butler winum which-key web-mode web-beautify volatile-highlights visual-regexp-steroids vimrc-mode vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline solarized-theme smex smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree mwim move-text monokai-theme mmm-mode minitest markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md ggtags fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode ein dumb-jump disaster define-word dactyl-mode cython-mode company-web company-tern company-statistics company-shell company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-highlight-symbol auto-dictionary auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(reftex-default-bibliography
+   (quote
+    ("/home/jdamp/cernbox/work/phd/thesis/bibliography.bib" "~/cernbox/work/phd/thesis/bibliography.bib"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+ '(package-selected-packages
+   (quote
+    (csv-mode org-mime lua-mode zenburn-theme yapfify ws-butler winum which-key web-mode web-beautify volatile-highlights visual-regexp-steroids vimrc-mode vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline solarized-theme smex smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file neotree mwim move-text monokai-theme mmm-mode minitest markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc insert-shebang info+ indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md ggtags fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode ein dumb-jump disaster define-word dactyl-mode cython-mode company-web company-tern company-statistics company-shell company-c-headers company-auctex company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format chruby bundler auto-yasnippet auto-highlight-symbol auto-dictionary auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(reftex-default-bibliography
+   (quote
+    ("/home/jdamp/cernbox/work/phd/thesis/bibliography.bib" "~/cernbox/work/phd/thesis/bibliography.bib"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)

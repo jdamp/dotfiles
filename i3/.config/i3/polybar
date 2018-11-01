@@ -48,8 +48,8 @@ scroll-down = i3wm-wsprev
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-module-margin-left = 10
-module-margin-right = 0
+module-margin-left = 
+module-margin-right = 5
 
 border-top-size = 3
 border-right-size = 3
@@ -59,17 +59,18 @@ border-color = ${colors.black2}
 
 line-size = 2
 
-font-0 = FontAwesome:size=10;0
-font-1 = Roboto:size=10;0
-font-2 = "Wuncon siji:pixelsize=10;0"
-font-3 = "Wuncon siji:pixelsize=10;0";"FontAwesome 5:style=Solid:pixelsize=9;0"
+font-0 = "Inconsolata Nerd Font:style=Regular:size=11;0"
+
 
 modules-left = i3 
 modules-center = spotify
 modules-right = volume xbacklight battery0 battery1 date
 tray-position = right
-tray-padding = 0
+tray-padding = 5
 tray-background = ${colors.black1}
+tray-detached = false
+tray-maxsize=16
+tray-transparent = false
 
 
 [bar/top-left]
@@ -83,7 +84,7 @@ background = ${colors.bg}
 foreground = ${colors.fg}
 
 modules-left = i3
-
+font-0 = "Inconsolata Nerd Font:style=Regular:size=11;0"
 
 [module/battery0]
 type = internal/battery
@@ -99,7 +100,7 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
 label-charging = Charging %percentage%% %time%%
-label-discharging = %percentage%% %time% left
+label-discharging = %percentage%% %time%
 label-full = Fully charged
 
 format-discharging-foreground = ${colors.magenta1}
@@ -139,15 +140,12 @@ full-at = 99
 battery = BAT1
 adapter = ADP1
 poll-interval = 5
-; see "man date" for details on how to format the time string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
-; Default: %H:%M:%S
 time-format = %H:%M
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
 label-charging = Charging %percentage%% %time%%
-label-discharging = %percentage%% %time% left
+label-discharging = %percentage%% %time%
 label-full = Fully charged
 
 format-discharging-foreground = ${colors.magenta1}
@@ -186,7 +184,6 @@ type = internal/i3
 pin-workspaces = true
 strip-wsnumbers = true
 index-sort = true
-enable-click = false
 enable-scroll = false
 wrapping-scroll = false
 reverse-scroll = false
@@ -200,19 +197,19 @@ label-mode-background = ${colors.green1}
 label-focused = %index%
 label-focused-foreground = ${colors.black1}
 label-focused-background = ${colors.white1}
-label-focused-padding = 4
+label-focused-padding = 3
 
 label-unfocused = %index%
 label-unfocused-foreground = ${colors.white1}
-label-unfocused-padding = 4
+label-unfocused-padding = 3
 
 label-urgent = %index%
 label-urgent-background = ${colors.blue1}
-label-urgent-padding = 4
+label-urgent-padding = 3
 
 label-visible = %index%
 label-visible-foreground = ${colors.red1}
-label-visible-padding = 4
+label-visible-padding = 3
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -222,12 +219,15 @@ format-foreground = ${colors.yellow1}
 format-underline = ${colors.yellow1}
 label = %percentage%%
 
-ramp-0 =
-ramp-1 =
-ramp-2 =
-ramp-3 =
-ramp-4 =
-
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
+ramp-7 = 
+ramp-8 = 
 
 [module/date]
 type = internal/date
@@ -243,8 +243,7 @@ format =  <label>
 label = %date% %time%
 label-font = 3
 format-foreground = ${colors.cyan1}
-format
--underline = ${colors.cyan1}
+format-underline = ${colors.cyan1}
 
 [module/volume]
 type = internal/pulseaudio

@@ -1,16 +1,16 @@
- ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
-! Use extended color scheme
-rofi.color-enabled:                  true
-! Color scheme for normal row
-rofi.color-normal:                   #ffffff,#525d76,#f5f5f5,#5294e2,#ffffff
-! Color scheme for urgent row
-rofi.color-urgent:                   #ffffff,#dc322f,#f5f5f5,#5294e2,#dc322f
-! Color scheme for active row
-rofi.color-active:                   #ffffff,#c2cad0,#f5f5f5,#5294e2,#c2cad0
-! Color scheme window
-rofi.color-window:                   #ffffff,#f5f5f5
-! Separator style (none, dash, solid)
-rofi.separator-style:                solid
-
+rofi.fullscreen: true
+rofi.separator-style: dash
+rofi.hide-scrollbar: true
+rofi.padding: 400
+! rofi.eh: 1
+rofi.bw: 0
+rofi.lines: 5
+! rofi.line-margin: 15
+rofi.line-padding: 10
+!rofi.location: 4
+rofi.font: SanFranciscoDisplay-Regular 20
+! rofi.show-icons: true
+! rofi.levenshtein-sort: true
+! rofi.sidebar-mode: true
+! rofi.auto-select: true
+rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
