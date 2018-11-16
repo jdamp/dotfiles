@@ -66,7 +66,7 @@ alias -s pdf=evince
 alias -s tex=emacs
 alias -s png=eog
 alias root="root -l"
-alias emnw='emacs -nw'
+alias emnw='TERM=xterm-utf8 emacs -nw'
 alias bat_80='tpacpi-bat -s SP 0 80'
 alias bat_100='tpacpi-bat -s SP 0 0'
 alias ...='cd ../..'
@@ -74,8 +74,11 @@ alias ....='cd ../../../'
 alias ipython="ipython --pylab"
 
 bw () {
-	wal -i "$1" -a90
+	wal -i "$1" -a 85 -g
 	cp -r "$1" $HOME/pics/wallpaper
+	convert $HOME/pics/wallpaper /usr/share/lightdm-webkit/themes/litarvan/images/background.jpg
+	$HOME/local/intellijPywal/intellijPywalGen.sh $HOME/.PyCharm2018.2/config
+  betterlockscreen -u $HOME/pics/wallpaper
 }
 
 wallpaper=$HOME/pics/wallpaper.png
