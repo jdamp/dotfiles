@@ -1,10 +1,10 @@
 ! Fonts
-URxvt.perl-ext-common: default,matcher,selection-to-clipboard,font-size,clipboard
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard,font-size
 URxvt.allow_bold:           true
 
 !scientifica
-URxvt*font:           xft:Inconsolata\ For\ Powerline:size=10,xft:DejaVu Sans Mono for Powerline:size=10
-URxvt.font:           xft:Inconsolata\ For\ Powerline:size=10,xft:DejaVu Sans Mono for Powerline:size=10
+URxvt*font:           xft:Inconsolata\ For\ Powerline:size=12,xft:DejaVu Sans Mono for Powerline:size=12
+URxvt.font:           xft:Inconsolata\ For\ Powerline:size=12,xft:DejaVu Sans Mono for Powerline:size=12
 ! Fix font space
 URxvt*letterSpace: 1
 
