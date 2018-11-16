@@ -15,10 +15,6 @@ echo "Bars launched..."
 pkill telegram-desktop; telegram-desktop
 pkill cernbox; cernbox
 
+sleep 2
 
-sleep 5
-
-while pgrep -x compton >/dev/null; do
-	  sleep 1;
-done
-compton -b --config ~/.config/compton.conf &
+compton -b --config ~/.config/compton.conf

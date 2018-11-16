@@ -63,8 +63,7 @@ font-0 = "Inconsolata Nerd Font:style=Regular:size=11;0"
 
 
 modules-left = i3 
-modules-center = spotify
-modules-right = volume xbacklight battery0 battery1 date
+modules-right = spotify volume xbacklight battery0 battery1 date
 tray-position = right
 tray-padding = 5
 tray-background = ${colors.black1}
@@ -84,7 +83,16 @@ background = ${colors.bg}
 foreground = ${colors.fg}
 
 modules-left = i3
+modules-right = date
 font-0 = "Inconsolata Nerd Font:style=Regular:size=11;0"
+
+border-top-size = 3
+border-right-size = 3
+border-left-size = 3
+border-bottom-size = 3
+border-color = ${colors.black2}
+line-size = 2
+
 
 [module/battery0]
 type = internal/battery
@@ -257,12 +265,13 @@ format-volume-foreground = ${colors.blue2}
 format-muted-foreground = ${colors.blue2}
 format-volume-underline = ${colors.blue2}
 format-muted-underline = ${colors.blue2}
-label-muted =  muted
+label-muted =  muted
 label-muted-foreground = #fff
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 
 ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-2 = 墳
+ramp-volume-3 = 
 
 ;format-foreground = ${colors.blue1}
 format-underline = #20dfdf

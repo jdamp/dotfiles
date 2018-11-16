@@ -124,8 +124,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-set $Locker i3lock -c000000
-#set $Locker i3lock-fancy
+#set $Locker i3lock -c000000
+set $Locker betterlockscreen -l blur 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
@@ -165,9 +165,7 @@ bindsym $mod+F12 exec --no-startup-id $HOME/.config/i3/autorandr.sh
 bindsym $mod+o exec i3-msg open
 
 
-set $text-color          #eff1f5
-set $bg-color            #9575cd
-bindsym $mod+d exec rofi -show run -lines 10 -eh 1 -width 80 -padding 250 -opacity "20" -bw 20 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Code Pro 14"
+bindsym $mod+d exec rofi -show run -width 80
 
 assign [class="^TelegramDesktop$"] → 10
 assign [class="^Slack$"] → 10
@@ -180,13 +178,12 @@ for_window [class="Spotify"] move to workspace 8
 
 # Gaps and border Settings
 
-set $default_gaps_inner 10
-set $default_gaps_outer 8
+set $default_gaps_inner 25
+set $default_gaps_outer 0
 new_window pixel 0
 hide_edge_borders both
 bindsym Control+Shift+x [class="^.*"] border toggle
 for_window [class="^.*"] border pixel 0
-smart_gaps on    
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 
@@ -232,13 +229,12 @@ client.background       $bg
 
 set $wallpaper ~/pics/wallpaper
 exec --no-startup-id nm-applet
-exec --no-startup-id cernbox
-exec --no-startup-id /usr/bin/telegram-desktop
-exec_always --no-startup-id $HOME/.config/i3/autorandr.sh
-exec_always --no-startup-id wal -R
+exec_always --no-startup-id $HOME/.config/i3/autorandr.sh &
+exec_always --no-startup-id wal -R -a 85
+exec_always --no-startup-id  $HOME/.config/i3/launch_polybar.sh &
+exec --no-startup-id "sleep 3; compton -b --config ~/.config/compton.conf &"
 #exec --no-startup-id "synclient TouchPadOff=1"
 exec --no-startup-id "xset b off"    
 exec --no-startup-id tilda
 exec --no-startup-id dunst
-exec --no-startup-id "xrdb ~/.Xresources"
 
