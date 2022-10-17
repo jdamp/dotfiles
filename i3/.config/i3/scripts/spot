@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-zscroll -u t -b "x " -d 0.15 -l 30 -M "playerctl status" -m "Playing" "-b ' '" -m "Paused" "-b ' ' -s 0" -m "Stopped" "-b ' '" 'artist_track' &
-
-wait
