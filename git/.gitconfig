@@ -18,13 +18,12 @@
 	pl = pull
 	diff = diff --word-diff
 	dc = diff --cached
-	# commit {{{
+	# commit commands
 	cm = commit -m
 	cma = commit -a -m
 	ca = commit --amend
 	amend = commit --amend
 	caa = commit -a --amend -C HEAD
-
 [core]
 	editor = emacs
 [push]
@@ -34,3 +33,16 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+[difftool]
+	prompt = false
+[mergetool "nbdime"]
+	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	prompt = false
