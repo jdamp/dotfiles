@@ -1,3 +1,24 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+setopt autocd extendedglob
+unsetopt beep
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/jdamp/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
 # Path to your oh-my-zsh installation.
 export ZSH=/usr/share/oh-my-zsh
 
@@ -5,8 +26,7 @@ export ZSH=/usr/share/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
-
+ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -45,16 +65,15 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(adb git pip tmux)
+fpath+=/home/jdamp/.oh-my-zsh/custom/plugins/conda-zsh-completion
+plugins=(git pip tmux)
 
 # User configuration
 
 source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-(cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
+compinit conda
 export EDITOR='emacs'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -64,36 +83,34 @@ export EDITOR='emacs'
 #
 alias -s pdf=evince
 alias -s tex=emacs
-alias -s png=eog
+alias -s png=gwenview
 alias root="root -l"
 alias emnw='TERM=xterm-utf8 emacs -nw'
-alias bat_80='tpacpi-bat -s SP 0 80'
-alias bat_100='tpacpi-bat -s SP 0 0'
 alias ...='cd ../..'
 alias ....='cd ../../../'
-alias ipython="ipython --pylab"
 
-bw () {
-	wal -i "$1" -a 85 -g
-	cp -r "$1" $HOME/pics/wallpaper
-	convert $HOME/pics/wallpaper /usr/share/lightdm-webkit/themes/litarvan/images/background.jpg
-	$HOME/local/intellijPywal/intellijPywalGen.sh $HOME/.PyCharm2018.2/config
-  betterlockscreen -u $HOME/pics/wallpaper
-}
+alias zshrc="vim ~/.zshrc"
 
 wallpaper=$HOME/pics/wallpaper.png
 
-alias xrandr_work='xrandr --output DP2 --mode 1680x1050 --right-of eDP1 && feh --bg-scale "$wallpaper"'
-alias xrandr_home='xrandr --output DP2 --mode 1680x1050 --left-of eDP1 && feh --bg-scale "$wallpaper"'
-alias xrandr_tv='xrandr --output HDMI1 --mode 1920x1080 --right-of eDP1 && feh --bg-scale "$wallpaper"'
- 
+export XILINXD_LICENSE_FILE=2100@galileo.zdv.uni-mainz.de #:2100@iph-olymp.physik.uni-mainz.de
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jdamp/local/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jdamp/local/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/jdamp/local/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jdamp/local/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 neofetch
-mount_mogon() {
-    ssh -f jdamp@linux.zdv.uni-mainz.de -L 22022:mogonetap:22 -N
-    sshfs -p 22022 jdamp@127.0.0.1:/home/jdamp/phd/ /home/jdamp/mnt/phd
-    }
-
-mount_lxplus() {
-    sshfs -p 22 jodamp@lxplus.cern.ch:/afs/cern.ch/work/j/jodamp/public/ /home/jdamp/mnt/lxplus
-}
-
