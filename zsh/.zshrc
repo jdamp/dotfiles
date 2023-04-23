@@ -66,7 +66,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 fpath+=/home/jdamp/.oh-my-zsh/custom/plugins/conda-zsh-completion
-plugins=(git pip tmux)
+plugins=(git pip tmux aws)
 
 # User configuration
 
