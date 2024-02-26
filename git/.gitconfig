@@ -26,6 +26,6 @@
 	amend = commit --amend
 	caa = commit -a --amend -C HEAD
 [core]
-	editor = emacs
+	editor = vim
 [push]
 	default = simple
