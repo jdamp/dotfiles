@@ -14,7 +14,7 @@
 	ci = commit
 	co = checkout
 	br = branch
-	bb = !better-branch.sh
+	bb = !better-git-branch.sh
 	ps = push
 	pl = pull
 	diff = diff --word-diff
